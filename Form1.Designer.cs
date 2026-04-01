@@ -57,17 +57,17 @@ namespace WinFormsApp5
             status8 = new StatusStrip();
             status6 = new StatusStrip();
             status5 = new StatusStrip();
+            status3 = new StatusStrip();
             status1 = new StatusStrip();
             toolStripStatusLabel1 = new ToolStripStatusLabel();
             clarityBindingSource = new BindingSource(components);
             toolStripStatusLabel9 = new ToolStripStatusLabel();
             status4 = new StatusStrip();
-            status3 = new StatusStrip();
-            status2 = new StatusStrip();
-            label31 = new Label();
-            label30 = new Label();
-            label29 = new Label();
             label28 = new Label();
+            label31 = new Label();
+            status2 = new StatusStrip();
+            label29 = new Label();
+            label30 = new Label();
             label27 = new Label();
             label26 = new Label();
             label25 = new Label();
@@ -291,14 +291,14 @@ namespace WinFormsApp5
             panel1.Controls.Add(status8);
             panel1.Controls.Add(status6);
             panel1.Controls.Add(status5);
+            panel1.Controls.Add(status3);
             panel1.Controls.Add(status1);
             panel1.Controls.Add(status4);
-            panel1.Controls.Add(status3);
-            panel1.Controls.Add(status2);
-            panel1.Controls.Add(label31);
-            panel1.Controls.Add(label30);
-            panel1.Controls.Add(label29);
             panel1.Controls.Add(label28);
+            panel1.Controls.Add(label31);
+            panel1.Controls.Add(status2);
+            panel1.Controls.Add(label29);
+            panel1.Controls.Add(label30);
             panel1.Controls.Add(label27);
             panel1.Controls.Add(label26);
             panel1.Controls.Add(label25);
@@ -312,7 +312,7 @@ namespace WinFormsApp5
             panel1.Location = new Point(0, 2);
             panel1.Margin = new Padding(2);
             panel1.Name = "panel1";
-            panel1.Size = new Size(1523, 591);
+            panel1.Size = new Size(1581, 985);
             panel1.TabIndex = 7;
             // 
             // Attempt_Diagnosis
@@ -385,7 +385,7 @@ namespace WinFormsApp5
             status7.AutoSize = false;
             status7.Dock = DockStyle.None;
             status7.ImageScalingSize = new Size(20, 20);
-            status7.Location = new Point(892, 497);
+            status7.Location = new Point(921, 694);
             status7.Name = "status7";
             status7.Size = new Size(427, 35);
             status7.TabIndex = 34;
@@ -396,7 +396,7 @@ namespace WinFormsApp5
             status8.AutoSize = false;
             status8.Dock = DockStyle.None;
             status8.ImageScalingSize = new Size(20, 20);
-            status8.Location = new Point(12, 495);
+            status8.Location = new Point(41, 692);
             status8.Name = "status8";
             status8.Size = new Size(431, 37);
             status8.TabIndex = 33;
@@ -407,7 +407,7 @@ namespace WinFormsApp5
             status6.AutoSize = false;
             status6.Dock = DockStyle.None;
             status6.ImageScalingSize = new Size(20, 20);
-            status6.Location = new Point(453, 554);
+            status6.Location = new Point(985, 770);
             status6.Name = "status6";
             status6.Size = new Size(426, 37);
             status6.TabIndex = 30;
@@ -418,10 +418,21 @@ namespace WinFormsApp5
             status5.AutoSize = false;
             status5.Dock = DockStyle.None;
             status5.ImageScalingSize = new Size(20, 20);
-            status5.Location = new Point(889, 435);
+            status5.Location = new Point(918, 632);
             status5.Name = "status5";
             status5.Size = new Size(426, 38);
             status5.TabIndex = 29;
+            // 
+            // status3
+            // 
+            status3.Anchor = AnchorStyles.None;
+            status3.AutoSize = false;
+            status3.Dock = DockStyle.None;
+            status3.ImageScalingSize = new Size(20, 20);
+            status3.Location = new Point(42, 780);
+            status3.Name = "status3";
+            status3.Size = new Size(430, 36);
+            status3.TabIndex = 27;
             // 
             // status1
             // 
@@ -431,9 +442,9 @@ namespace WinFormsApp5
             status1.GripStyle = ToolStripGripStyle.Visible;
             status1.ImageScalingSize = new Size(20, 20);
             status1.Items.AddRange(new ToolStripItem[] { toolStripStatusLabel1, toolStripStatusLabel9 });
-            status1.Location = new Point(9, 435);
+            status1.Location = new Point(15, 440);
             status1.Name = "status1";
-            status1.Size = new Size(433, 38);
+            status1.Size = new Size(462, 38);
             status1.TabIndex = 24;
             status1.TabStop = true;
             // 
@@ -442,7 +453,7 @@ namespace WinFormsApp5
             toolStripStatusLabel1.DataBindings.Add(new Binding("Tag", clarityBindingSource, "", true));
             toolStripStatusLabel1.DisplayStyle = ToolStripItemDisplayStyle.Text;
             toolStripStatusLabel1.Name = "toolStripStatusLabel1";
-            toolStripStatusLabel1.Size = new Size(151, 24);
+            toolStripStatusLabel1.Size = new Size(151, 32);
             toolStripStatusLabel1.Text = "toolStripStatusLabel1";
             // 
             // clarityBindingSource
@@ -452,7 +463,7 @@ namespace WinFormsApp5
             // toolStripStatusLabel9
             // 
             toolStripStatusLabel9.Name = "toolStripStatusLabel9";
-            toolStripStatusLabel9.Size = new Size(151, 24);
+            toolStripStatusLabel9.Size = new Size(151, 32);
             toolStripStatusLabel9.Text = "toolStripStatusLabel9";
             // 
             // status4
@@ -461,21 +472,34 @@ namespace WinFormsApp5
             status4.AutoSize = false;
             status4.Dock = DockStyle.None;
             status4.ImageScalingSize = new Size(20, 20);
-            status4.Location = new Point(453, 497);
+            status4.Location = new Point(482, 694);
             status4.Name = "status4";
             status4.Size = new Size(427, 34);
             status4.TabIndex = 28;
             // 
-            // status3
+            // label28
             // 
-            status3.Anchor = AnchorStyles.None;
-            status3.AutoSize = false;
-            status3.Dock = DockStyle.None;
-            status3.ImageScalingSize = new Size(20, 20);
-            status3.Location = new Point(12, 555);
-            status3.Name = "status3";
-            status3.Size = new Size(430, 36);
-            status3.TabIndex = 27;
+            label28.BackColor = SystemColors.GradientInactiveCaption;
+            label28.BorderStyle = BorderStyle.Fixed3D;
+            label28.Font = new Font("Tw Cen MT Condensed", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            label28.Location = new Point(28, 560);
+            label28.Name = "label28";
+            label28.Size = new Size(430, 40);
+            label28.TabIndex = 19;
+            label28.Text = "Main Drive Shaft Large Spur Gear";
+            label28.TextAlign = ContentAlignment.TopCenter;
+            // 
+            // label31
+            // 
+            label31.BackColor = SystemColors.GradientInactiveCaption;
+            label31.BorderStyle = BorderStyle.Fixed3D;
+            label31.Font = new Font("Tw Cen MT Condensed", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            label31.Location = new Point(970, 542);
+            label31.Name = "label31";
+            label31.Size = new Size(430, 40);
+            label31.TabIndex = 22;
+            label31.Text = "Drive Shaft Bevel Gear";
+            label31.TextAlign = ContentAlignment.TopCenter;
             // 
             // status2
             // 
@@ -487,17 +511,17 @@ namespace WinFormsApp5
             status2.Size = new Size(428, 39);
             status2.TabIndex = 26;
             // 
-            // label31
+            // label29
             // 
-            label31.BackColor = SystemColors.GradientInactiveCaption;
-            label31.BorderStyle = BorderStyle.Fixed3D;
-            label31.Font = new Font("Tw Cen MT Condensed", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label31.Location = new Point(889, 473);
-            label31.Name = "label31";
-            label31.Size = new Size(430, 23);
-            label31.TabIndex = 22;
-            label31.Text = "Drive Shaft Bevel Gear";
-            label31.TextAlign = ContentAlignment.TopCenter;
+            label29.BackColor = SystemColors.GradientInactiveCaption;
+            label29.BorderStyle = BorderStyle.Fixed3D;
+            label29.Font = new Font("Tw Cen MT Condensed", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            label29.Location = new Point(479, 553);
+            label29.Name = "label29";
+            label29.Size = new Size(428, 40);
+            label29.TabIndex = 20;
+            label29.Text = "Main Drive Shaft Small Spur Gear";
+            label29.TextAlign = ContentAlignment.TopCenter;
             // 
             // label30
             // 
@@ -510,30 +534,6 @@ namespace WinFormsApp5
             label30.TabIndex = 21;
             label30.Text = "Lance Tube Bevel Gear";
             label30.TextAlign = ContentAlignment.TopCenter;
-            // 
-            // label29
-            // 
-            label29.BackColor = SystemColors.GradientInactiveCaption;
-            label29.BorderStyle = BorderStyle.Fixed3D;
-            label29.Font = new Font("Tw Cen MT Condensed", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label29.Location = new Point(452, 531);
-            label29.Name = "label29";
-            label29.Size = new Size(428, 23);
-            label29.TabIndex = 20;
-            label29.Text = "Main Drive Shaft Small Spur Gear";
-            label29.TextAlign = ContentAlignment.TopCenter;
-            // 
-            // label28
-            // 
-            label28.BackColor = SystemColors.GradientInactiveCaption;
-            label28.BorderStyle = BorderStyle.Fixed3D;
-            label28.Font = new Font("Tw Cen MT Condensed", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label28.Location = new Point(12, 531);
-            label28.Name = "label28";
-            label28.Size = new Size(430, 23);
-            label28.TabIndex = 19;
-            label28.Text = "Main Drive Shaft Large Spur Gear";
-            label28.TextAlign = ContentAlignment.TopCenter;
             // 
             // label27
             // 
@@ -774,7 +774,7 @@ namespace WinFormsApp5
             panel3.Location = new Point(0, 0);
             panel3.Margin = new Padding(2);
             panel3.Name = "panel3";
-            panel3.Size = new Size(1924, 815);
+            panel3.Size = new Size(1584, 815);
             panel3.TabIndex = 8;
             panel3.Paint += panel3_Paint_1;
             // 
@@ -1374,7 +1374,7 @@ namespace WinFormsApp5
             // 
             AutoScaleDimensions = new SizeF(8F, 17F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1924, 596);
+            ClientSize = new Size(1584, 961);
             Controls.Add(panel1);
             Controls.Add(panel2);
             Controls.Add(panel3);
@@ -1385,7 +1385,6 @@ namespace WinFormsApp5
             Name = "Clarity";
             StartPosition = FormStartPosition.WindowsDefaultBounds;
             Text = "Clarity";
-            WindowState = FormWindowState.Maximized;
             panel1.ResumeLayout(false);
             status1.ResumeLayout(false);
             status1.PerformLayout();

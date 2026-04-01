@@ -12,6 +12,12 @@ using System.Data;
 using System.Diagnostics;
 using System.Diagnostics.Eventing.Reader;
 using System.Drawing.Text;
+
+using System.IO;
+using System.IO.Ports;
+using System.Text;
+using System.Threading;
+
 using System.Globalization;
 
 
@@ -109,7 +115,7 @@ namespace WinFormsApp5
             this.Text = "Clarity"; // Top Right Text
                                    //this.fft_data =  new double[][] { FftSharp.SampleData.SampleAudio1(), FftSharp.SampleData.OddSines() };
 
-           
+
             // First Cluster of Graphs
             panel1.Controls.Add(formsPlot1);
             panel1.Controls.Add(formsPlot2);
@@ -876,7 +882,7 @@ namespace WinFormsApp5
             }
 
 
-            
+
         }
 
         int Graph_Select = 1;
@@ -972,7 +978,7 @@ namespace WinFormsApp5
             // double sample_rate = 1000; // Samples per second
             // double sample_period = sample_rate / 1000.0; // 
             //string[] legend_text = { "Baseline", "Tooth Breakage" };
-            LinePattern[] line_patterns = { LinePattern.Solid, LinePattern.DenselyDashed , LinePattern.Dotted};
+            LinePattern[] line_patterns = { LinePattern.Solid, LinePattern.DenselyDashed, LinePattern.Dotted };
 
             // Only Plot Current
             for (int i = 1; i < signal_count; i++)
@@ -1005,7 +1011,7 @@ namespace WinFormsApp5
             formsPlot5.Plot.XLabel("Time (s)");
             formsPlot5.Plot.Title("Original Waveform");
             formsPlot5.Refresh();
-       
+
             formsPlot6.Plot.YLabel("Magnitude ");
             formsPlot6.Plot.XLabel("Frequency (Hz)");
             formsPlot6.Plot.Title("FFT");
@@ -1039,167 +1045,50 @@ namespace WinFormsApp5
         }
 
         public void Attempt_Diagnosis_Click(object sender, EventArgs e)
-        {   //Needs changed to manginitude[index1] == healthy_Magnitude[index1]
+        {
             int signal_count = magnitude.Length;
             //gear mesh frequencies
-            int index1 = Convert.ToInt32(InSG_GMF);
-            int index2 = Convert.ToInt32(WmSG_GMF);
-            int index3 = Convert.ToInt32(DsLSG_GMF);
-            int index4 = Convert.ToInt32(DsSSG_GMF);
-            int index5 = Convert.ToInt32(LtBG_GMF);
-            int index6 = Convert.ToInt32(DsBG_GMF);
-            int index7 = Convert.ToInt32(MdSSG_GMF);
-            int index8 = Convert.ToInt32(MdLSG_GMF);
-
+            int[] gear_indexs = { Convert.ToInt32(InSG_GMF), Convert.ToInt32(WmSG_GMF), Convert.ToInt32(DsLSG_GMF), Convert.ToInt32(DsSSG_GMF), Convert.ToInt32(LtBG_GMF), Convert.ToInt32(DsBG_GMF), Convert.ToInt32(MdSSG_GMF), Convert.ToInt32(MdLSG_GMF) };
+            ToolStripLabel[] damage_label = { toolStripStatusLabel1, toolStripStatusLabel2, toolStripStatusLabel3, toolStripStatusLabel4, toolStripStatusLabel5, toolStripStatusLabel6, toolStripStatusLabel7, toolStripStatusLabel8 };
             Debug.Print("{0}\n", signal_count);
+            int[] degree_of_damage = new int[8];
 
-
-            int how_bad_is_it = 0;
-            for (int i = 0; i < signal_count; i++)
+            //testing all the gear indexes and finding how damages they are
+            for (int j = 0; j < 8; j++)
             {
-                //magnitude change
-                if (magnitude[index1] > healthy_Magnitude[index1] + healthy_Magnitude[index1]*.10)
+                for (int i = 0; i < signal_count; i++)
                 {
-                    how_bad_is_it = Math.Max(how_bad_is_it, 1);
-                }
+                    //magnitude change
+                    if (magnitude[gear_indexs[j]] > healthy_Magnitude[gear_indexs[j]] + healthy_Magnitude[gear_indexs[j]] * .10)
+                    {
+                        degree_of_damage[j] = Math.Max(degree_of_damage[j], 1);
+                    }
 
-                if (magnitude[index1] > healthy_Magnitude[index1] + healthy_Magnitude[index1] * .50)
-                 {
-                    how_bad_is_it = Math.Max(how_bad_is_it, 2);
-             }
-            }
-
-            if (how_bad_is_it == 0)
-            {
-                    toolStripStatusLabel1.Text = "Normal";   
-            }
-            else if (how_bad_is_it == 1)
-            { 
-                toolStripStatusLabel1.Text = "Minor Damage";
-            }
-            else
-            {
-                toolStripStatusLabel1.Text = "Major Damage";
-            }
-
-            for (int i = 0; i < signal_count; i++)
-            {
-
-                if (magnitude[index2] == healthy_Magnitude[index2])
-                {
-                    toolStripStatusLabel2.Text = "Normal";
-                }
-                if (magnitude[index2] > healthy_Magnitude[index2] + healthy_Magnitude[index2] * .10)
-                {
-                    toolStripStatusLabel2.Text = "Minor Damage";
-                }
-
-                if (magnitude[index2] > healthy_Magnitude[index2] + healthy_Magnitude[index2] * .50)
-                {
-                    toolStripStatusLabel2.Text = "Major Damage";
+                    if (magnitude[gear_indexs[j]] > healthy_Magnitude[gear_indexs[j]] + healthy_Magnitude[gear_indexs[j]] * .50)
+                    {
+                        degree_of_damage[j] = Math.Max(degree_of_damage[j], 2);
+                    }
                 }
             }
-
-            for (int i = 0; i < signal_count; i++)
+            //setting the label to diplay the damage
+            
+            for (int i = 0; i < 8; i++)
             {
-
-                if (magnitude[index3] == healthy_Magnitude[index3])
+                Debug.Print("Label {0} {1}\n", damage_label[i].Text, i);
+                if (degree_of_damage[i] == 0)
                 {
-                    toolStripStatusLabel3.Text = "Normal";
+                    damage_label[i].Text = "Normal";
+                    Debug.Print("Normal\n");
                 }
-                if (magnitude[index3] > healthy_Magnitude[index3] + healthy_Magnitude[index3] * .10)
+                else if (degree_of_damage[i] == 1)
                 {
-                    toolStripStatusLabel3.Text = "Minor Damage";
+                    damage_label[i].Text = "Minor Damage";
+                    Debug.Print("Minor Damage\n");
                 }
-
-                if (magnitude[index3] > healthy_Magnitude[index3] + healthy_Magnitude[index3] * .50)
+                else
                 {
-                    toolStripStatusLabel3.Text = "Major Damage";
-                }
-            }
-            for (int i = 0; i < signal_count; i++)
-            {
-
-                if (magnitude[index4] == healthy_Magnitude[index4])
-                {
-                    toolStripStatusLabel4.Text = "Normal";
-                }
-                if (magnitude[index4] > healthy_Magnitude[index4] + healthy_Magnitude[index4] * .10)
-                {
-                    toolStripStatusLabel4.Text = "Minor Damage";
-                }
-
-                if (magnitude[index4] > healthy_Magnitude[index4] + healthy_Magnitude[index4] * .50)
-                {
-                    toolStripStatusLabel4.Text = "Major Damage";
-                }
-            }
-            for (int i = 0; i < signal_count; i++)
-            {
-
-                if (magnitude[index5] == healthy_Magnitude[index5])
-                {
-                    toolStripStatusLabel5.Text = "Normal";
-                }
-                if (magnitude[index5] > healthy_Magnitude[index5] + healthy_Magnitude[index5] * .10)
-                {
-                    toolStripStatusLabel5.Text = "Minor Damage";
-                }
-
-                if (magnitude[index5] > healthy_Magnitude[index5] + healthy_Magnitude[index5] * .50)
-                {
-                    toolStripStatusLabel5.Text = "Major Damage";
-                }
-            }
-            for (int i = 0; i < signal_count; i++)
-            {
-
-                if (magnitude[index6] == healthy_Magnitude[index6])
-                {
-                    toolStripStatusLabel6.Text = "Normal";
-                }
-                if (magnitude[index6] > healthy_Magnitude[index6] + healthy_Magnitude[index6] * .10)
-                {
-                    toolStripStatusLabel6.Text = "Minor Damage";
-                }
-
-                if (magnitude[index6] > healthy_Magnitude[index6] + healthy_Magnitude[index6] * .50)
-                {
-                    toolStripStatusLabel6.Text = "Major Damage";
-                }
-            }
-            for (int i = 0; i < signal_count; i++)
-            {
-
-                if (magnitude[index7] == healthy_Magnitude[index7])
-                {
-                    toolStripStatusLabel7.Text = "Normal";
-                }
-                if (magnitude[index7] > healthy_Magnitude[index7] + healthy_Magnitude[index7] * .10)
-                {
-                    toolStripStatusLabel7.Text = "Minor Damage";
-                }
-
-                if (magnitude[index7] > healthy_Magnitude[index7] + healthy_Magnitude[index7] * .50)
-                {
-                    toolStripStatusLabel7.Text = "Major Damage";
-                }
-            }
-            for (int i = 0; i < signal_count; i++)
-            {
-
-                if (magnitude[index8] == healthy_Magnitude[index8])
-                {
-                    toolStripStatusLabel8.Text = "Normal";
-                }
-                if (magnitude[index8] > healthy_Magnitude[index8] + healthy_Magnitude[index8] * .10)
-                {
-                    toolStripStatusLabel8.Text = "Minor Damage";
-                }
-
-                if (magnitude[index8] > healthy_Magnitude[index8] + healthy_Magnitude[index8] * .50)
-                {
-                    toolStripStatusLabel8.Text = "Major Damage";
+                    damage_label[i].Text = "Major Damage";
+                    Debug.Print("Major Damage\n");
                 }
             }
 
@@ -1484,7 +1373,7 @@ namespace WinFormsApp5
                         var records = csv.GetRecords<signal_entry>().ToList();
                         int max_rows = 1;
                         Debug.Print("{0}\n", records.Count());
-                        
+
                         Debug.Print("{0}\n", records.Count());
                         while (max_rows < records.Count())
                         {
@@ -1494,13 +1383,13 @@ namespace WinFormsApp5
 
                         Debug.Print("{0}\n", max_rows);
 
-                       
+
                         for (int i = 0; i < 2; i++)
                         {
                             signals[i] = new double[max_rows];
                         }
 
-                        
+
 
                         foreach (signal_entry record in records)
                         {
@@ -1508,7 +1397,7 @@ namespace WinFormsApp5
                             signals[0][row_count] = record.time;
                             signals[1][row_count] = record.current;
                             row_count++;
-                            
+
 
                         }
                     }
@@ -1519,15 +1408,15 @@ namespace WinFormsApp5
                 }
             }
 
-            
-
-           
 
 
 
 
-           
-            
+
+
+
+
+
 
             /*for (int row = 1; row < rows.Length; row++)
             {
@@ -1669,6 +1558,14 @@ namespace WinFormsApp5
         {
 
         }
+
+        private void panel1_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        
+
     }
 
     public class signal_entry
