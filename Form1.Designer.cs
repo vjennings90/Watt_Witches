@@ -287,13 +287,6 @@ namespace WinFormsApp5
             panel1.Controls.Add(button3);
             panel1.Controls.Add(button4);
             panel1.Controls.Add(button6);
-            panel1.Controls.Add(status7);
-            panel1.Controls.Add(status8);
-            panel1.Controls.Add(status6);
-            panel1.Controls.Add(status5);
-            panel1.Controls.Add(status3);
-            panel1.Controls.Add(status1);
-            panel1.Controls.Add(status4);
             panel1.Controls.Add(label28);
             panel1.Controls.Add(label31);
             panel1.Controls.Add(status2);
@@ -378,138 +371,6 @@ namespace WinFormsApp5
             button6.Text = "Powertrain Settings";
             button6.UseVisualStyleBackColor = false;
             button6.Click += button6_Click;
-            // 
-            // status7
-            // 
-            status7.Anchor = AnchorStyles.None;
-            status7.AutoSize = false;
-            status7.Dock = DockStyle.None;
-            status7.ImageScalingSize = new Size(20, 20);
-            status7.Location = new Point(921, 694);
-            status7.Name = "status7";
-            status7.Size = new Size(427, 35);
-            status7.TabIndex = 34;
-            // 
-            // status8
-            // 
-            status8.Anchor = AnchorStyles.None;
-            status8.AutoSize = false;
-            status8.Dock = DockStyle.None;
-            status8.ImageScalingSize = new Size(20, 20);
-            status8.Location = new Point(41, 692);
-            status8.Name = "status8";
-            status8.Size = new Size(431, 37);
-            status8.TabIndex = 33;
-            // 
-            // status6
-            // 
-            status6.Anchor = AnchorStyles.None;
-            status6.AutoSize = false;
-            status6.Dock = DockStyle.None;
-            status6.ImageScalingSize = new Size(20, 20);
-            status6.Location = new Point(985, 770);
-            status6.Name = "status6";
-            status6.Size = new Size(426, 37);
-            status6.TabIndex = 30;
-            // 
-            // status5
-            // 
-            status5.Anchor = AnchorStyles.None;
-            status5.AutoSize = false;
-            status5.Dock = DockStyle.None;
-            status5.ImageScalingSize = new Size(20, 20);
-            status5.Location = new Point(918, 632);
-            status5.Name = "status5";
-            status5.Size = new Size(426, 38);
-            status5.TabIndex = 29;
-            // 
-            // status3
-            // 
-            status3.Anchor = AnchorStyles.None;
-            status3.AutoSize = false;
-            status3.Dock = DockStyle.None;
-            status3.ImageScalingSize = new Size(20, 20);
-            status3.Location = new Point(42, 780);
-            status3.Name = "status3";
-            status3.Size = new Size(430, 36);
-            status3.TabIndex = 27;
-            // 
-            // status1
-            // 
-            status1.Anchor = AnchorStyles.None;
-            status1.AutoSize = false;
-            status1.Dock = DockStyle.None;
-            status1.GripStyle = ToolStripGripStyle.Visible;
-            status1.ImageScalingSize = new Size(20, 20);
-            status1.Items.AddRange(new ToolStripItem[] { toolStripStatusLabel1, toolStripStatusLabel9 });
-            status1.Location = new Point(15, 440);
-            status1.Name = "status1";
-            status1.Size = new Size(462, 38);
-            status1.TabIndex = 24;
-            status1.TabStop = true;
-            // 
-            // toolStripStatusLabel1
-            // 
-            toolStripStatusLabel1.DataBindings.Add(new Binding("Tag", clarityBindingSource, "", true));
-            toolStripStatusLabel1.DisplayStyle = ToolStripItemDisplayStyle.Text;
-            toolStripStatusLabel1.Name = "toolStripStatusLabel1";
-            toolStripStatusLabel1.Size = new Size(151, 32);
-            toolStripStatusLabel1.Text = "toolStripStatusLabel1";
-            // 
-            // clarityBindingSource
-            // 
-            clarityBindingSource.DataSource = typeof(Clarity);
-            // 
-            // toolStripStatusLabel9
-            // 
-            toolStripStatusLabel9.Name = "toolStripStatusLabel9";
-            toolStripStatusLabel9.Size = new Size(151, 32);
-            toolStripStatusLabel9.Text = "toolStripStatusLabel9";
-            // 
-            // status4
-            // 
-            status4.Anchor = AnchorStyles.None;
-            status4.AutoSize = false;
-            status4.Dock = DockStyle.None;
-            status4.ImageScalingSize = new Size(20, 20);
-            status4.Location = new Point(482, 694);
-            status4.Name = "status4";
-            status4.Size = new Size(427, 34);
-            status4.TabIndex = 28;
-            // 
-            // label28
-            // 
-            label28.BackColor = SystemColors.GradientInactiveCaption;
-            label28.BorderStyle = BorderStyle.Fixed3D;
-            label28.Font = new Font("Tw Cen MT Condensed", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label28.Location = new Point(28, 560);
-            label28.Name = "label28";
-            label28.Size = new Size(430, 40);
-            label28.TabIndex = 19;
-            label28.Text = "Main Drive Shaft Large Spur Gear";
-            label28.TextAlign = ContentAlignment.TopCenter;
-            // 
-            // label31
-            // 
-            label31.BackColor = SystemColors.GradientInactiveCaption;
-            label31.BorderStyle = BorderStyle.Fixed3D;
-            label31.Font = new Font("Tw Cen MT Condensed", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label31.Location = new Point(970, 542);
-            label31.Name = "label31";
-            label31.Size = new Size(430, 40);
-            label31.TabIndex = 22;
-            label31.Text = "Drive Shaft Bevel Gear";
-            label31.TextAlign = ContentAlignment.TopCenter;
-            // 
-            // status2
-            // 
-            status2.AutoSize = false;
-            status2.Dock = DockStyle.None;
-            status2.ImageScalingSize = new Size(20, 20);
-            status2.Location = new Point(451, 435);
-            status2.Name = "status2";
-            status2.Size = new Size(428, 39);
-            status2.TabIndex = 26;
             // 
             // label29
             // 
@@ -1328,48 +1189,6 @@ namespace WinFormsApp5
             button11.UseVisualStyleBackColor = false;
             button11.Click += button11_Click;
             // 
-            // toolStripStatusLabel2
-            // 
-            toolStripStatusLabel2.Margin = new Padding(0, 3, 0, 2);
-            toolStripStatusLabel2.Name = "toolStripStatusLabel2";
-            toolStripStatusLabel2.Size = new Size(23, 23);
-            // 
-            // toolStripStatusLabel3
-            // 
-            toolStripStatusLabel3.Margin = new Padding(0, 3, 0, 2);
-            toolStripStatusLabel3.Name = "toolStripStatusLabel3";
-            toolStripStatusLabel3.Size = new Size(23, 23);
-            // 
-            // toolStripStatusLabel4
-            // 
-            toolStripStatusLabel4.Margin = new Padding(0, 3, 0, 2);
-            toolStripStatusLabel4.Name = "toolStripStatusLabel4";
-            toolStripStatusLabel4.Size = new Size(23, 23);
-            // 
-            // toolStripStatusLabel5
-            // 
-            toolStripStatusLabel5.Margin = new Padding(0, 3, 0, 2);
-            toolStripStatusLabel5.Name = "toolStripStatusLabel5";
-            toolStripStatusLabel5.Size = new Size(23, 23);
-            // 
-            // toolStripStatusLabel6
-            // 
-            toolStripStatusLabel6.Margin = new Padding(0, 3, 0, 2);
-            toolStripStatusLabel6.Name = "toolStripStatusLabel6";
-            toolStripStatusLabel6.Size = new Size(23, 23);
-            // 
-            // toolStripStatusLabel7
-            // 
-            toolStripStatusLabel7.Margin = new Padding(0, 3, 0, 2);
-            toolStripStatusLabel7.Name = "toolStripStatusLabel7";
-            toolStripStatusLabel7.Size = new Size(23, 23);
-            // 
-            // toolStripStatusLabel8
-            // 
-            toolStripStatusLabel8.Margin = new Padding(0, 3, 0, 2);
-            toolStripStatusLabel8.Name = "toolStripStatusLabel8";
-            toolStripStatusLabel8.Size = new Size(23, 23);
-            // 
             // Clarity
             // 
             AutoScaleDimensions = new SizeF(8F, 17F);
@@ -1480,24 +1299,6 @@ namespace WinFormsApp5
         private Label label30;
         private Label label29;
         private Label label28;
-        private StatusStrip status1;
-        private ToolStripStatusLabel toolStripStatusLabel1;
-        private ToolStripStatusLabel toolStripStatusLabel2;
-        private ToolStripStatusLabel toolStripStatusLabel3;
-        private ToolStripStatusLabel toolStripStatusLabel4;
-        private ToolStripStatusLabel toolStripStatusLabel5;
-        private ToolStripStatusLabel toolStripStatusLabel6;
-        private ToolStripStatusLabel toolStripStatusLabel7;
-        private ToolStripStatusLabel toolStripStatusLabel8;
-        private BindingSource clarityBindingSource;
-        private StatusStrip status6;
-        private StatusStrip status5;
-        private StatusStrip status4;
-        private StatusStrip status3;
-        private StatusStrip status2;
-        private ToolStripStatusLabel toolStripStatusLabel9;
-        private StatusStrip status7;
-        private StatusStrip status8;
         public Button button3;
         public Button button4;
         private Button button6;
